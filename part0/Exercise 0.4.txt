@@ -1,0 +1,33 @@
+title Exercise 0.4
+
+browser->server: POST https://studies.cs.helsinki.fi/exampleapp/new_note HTTP/1.1
+
+note over server:
+The server redirects the HTTP request, returning status code 302
+and the location of the desired resource
+end note
+
+server-->browser: HTTP/1.1 302 Found\n Location:https://studies.cs.helsinki.fi/exampleapp/notes
+
+
+browser->server: GET https://studies.cs.helsinki.fi/exampleapp/notes HTTP/1.1
+server-->browser: HTTP/1.1 200 OK\n notes HTML file
+
+note over browser:
+From the HTML code the browser sees that it needs two
+additional resources: main.css and main.js. It then
+makes two HTTP GET to retrieve them
+end note
+
+browser->server: GET https://studies.cs.helsinki.fi/exampleapp/main.css HTTP/1.1
+server-->browser: HTTP/1.1 200 OK\n main.css
+browser->server: GET https://studies.cs.helsinki.fi/exampleapp/main.js HTTP/1.1
+server-->browser: HTTP/1.1 200 OK\n main.js
+
+note over browser:
+After the main.js code is run from the browser, it requests
+the JSON file containing the data to display in the page
+end note
+
+browser->server: GET https://studies.cs.helsinki.fi/exampleapp/data.json HTTP/1.1
+server-->browser: HTTP/1.1 200 OK\n data.json

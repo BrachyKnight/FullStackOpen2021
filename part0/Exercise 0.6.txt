@@ -1,0 +1,19 @@
+title Exercise 0.6
+
+note over browser:
+At this point the new note has already been added to the page
+thanks to the spa.js file without the need to request a new
+HTML file from the server. The following HTTP POST is needed
+to add the note to the database
+end note
+
+browser->server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa HTTP/1.1
+
+note over server:
+The server responds with a JSON file, but it doesn't contain
+the data to be displayed. It contains a property named "message"
+with a string value of "note created"
+end note
+
+server-->browser: HTTP/1.1 201 Created\n{"message":"note created"}
+

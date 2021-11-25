@@ -1,0 +1,23 @@
+title Exercise 0.5
+
+browser->server: GET https://studies.cs.helsinki.fi/exampleapp/spa HTTP/1.1
+server-->browser: HTTP/1.1 200 OK\n spa HTML file
+
+note over browser:
+From the HTML code the browser sees that it needs two
+additional resources: main.css and spa.js. It then
+makes two HTTP GET to retrieve them
+end note
+
+browser->server: GET https://studies.cs.helsinki.fi/exampleapp/main.css HTTP/1.1
+server-->browser: HTTP/1.1 200 OK\n main.css
+browser->server: GET https://studies.cs.helsinki.fi/exampleapp/main.js HTTP/1.1
+server-->browser: HTTP/1.1 200 OK\n spa.js
+
+note over browser:
+After the spa.js code is run from the browser, it requests
+the JSON file containing the data to display in the page
+end note
+
+browser->server: GET https://studies.cs.helsinki.fi/exampleapp/data.json HTTP/1.1
+server-->browser: HTTP/1.1 200 OK\n data.json
